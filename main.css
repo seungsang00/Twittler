@@ -1,13 +1,161 @@
-#greeting {
-  font-size: 2em;
-  font-family: sans-serif;
-  font-weight: bold;
-  border: 2px solid #ccc;
-  border-radius: 1em;
-  color: white;
-  background-color: #eee;
-  text-shadow: 0 0 5px #333;
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+/* reset */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+}
+
+a, a:focus, a:hover {
+  text-decoration: none;
+  color: rgb(29, 161, 242);
+}
+
+button, textarea, input {
+  font-size: 16px;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+textarea, input {
+  padding: 5px;
+  font-family: Arial;
+  color: rgb(15, 20, 25);
+  font-size: 19px;
+}
+
+ul, li {
+  list-style: none;
+}
+
+header, aside {
+  flex: 1 1 auto;
+  height: 100vh;
+}
+
+main {
+  flex: 3 1 auto;
+  max-width: 1152px;
+  /* padding: 0 16px; */
+  border-left: 1px solid rgb(235, 238, 240);
+  border-right: 1px solid rgb(235, 238, 240);
+  background-color: rgb(247, 249, 250);
+}
+
+main > #main-header {
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  border-bottom: 1px solid rgb(235, 238, 240);
+  /* margin-bottom: 10px; */
+  padding: 0 10px 0 16px;
+}
+
+main > #main-header > h2 {
+  font-family: 'Pacifico', cursive;
+  font-weight: 400;
+  flex: 10 1 auto;
   text-align: center;
-  margin: 0.5em;
-  padding: 0.5em;
+}
+
+.fa-redo {
+  color: rgb(29, 161, 242);
+  font-size: 1.15rem;
+  margin-top: 5px;
+}
+
+/* 공통 */
+.hidden {
+  visibility: hidden;
+}
+.image-section {
+  flex: 0 1 auto;
+  padding: 0 5px;
+  padding-left: 15px;
+}
+.image-section > img {
+  width: 50px;
+  border-radius: 9999px;
+  margin-top: 3px;
+}
+.text-section {
+  display: flex;
+  flex-direction: column;
+  margin: 0 10px;
+}
+.lh-13 {
+  line-height: 1.3125;
+}
+
+/* new-tweet-section */
+main > #new-tweet-section {
+  display: flex;
+  justify-content: flex-start;
+  margin: 0 0 16px 0;
+  padding: 16px 0;
+  background-color: white;
+  border-top: 1px solid rgb(235, 238, 240);
+  border-bottom: 1px solid rgb(235, 238, 240);
+}
+
+main > #new-tweet-section > #writing-section {
+  flex: 50 1 auto;
+}
+main > #new-tweet-section > #writing-section > input {
+  border-bottom: 1px solid rgb(235, 238, 240);
+  /* background-color: rgb(235, 238, 240); */
+  width: 15rem;
+  margin-top: 5px;
+}
+main > #new-tweet-section > #writing-section > textarea {
+  min-height: 5rem;
+  margin: 5px 0;
+  resize: none;
+}
+#register {
+  background-color: rgb(29, 161, 242);
+  width: 75px;
+  height: 30px;
+  border-radius: 15px;
+  margin-left: auto;
+  font-size: 15px;
+  color: white;
+  font-weight: 700;
+}
+
+#register:hover {
+  background-color: rgb(28, 150, 226);
+}
+
+/* tweet list */
+
+li.tweet {
+  display: flex;
+  padding: 10px 0;
+  background-color: white;
+  border-top: 1px solid rgb(235, 238, 240);
+}
+
+li.tweet:last-child {
+  border-bottom: 1px solid rgb(235, 238, 240);
+}
+
+span.username {
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+
+span.time {
+  font-size: 0.75rem;
+  font-weight: 300;
+  margin-left: 5px;
+}
+
+p.content {
+  padding: 5px 0;
 }

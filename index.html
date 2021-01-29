@@ -5,13 +5,76 @@
   <title>twittler</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
   <script src="data.js"></script>
 </head>
 <body>
   <!-- 여기에 HTML 구조를 작성하세요. 아래 코드는 예제이며, 얼마든지 바꿀 수 있습니다 -->
-  <div id="greeting">twittler</div>
-  <div id="test"></div>
-
+  <header><p class="hidden">this is header</p></header>
+  <main>
+    <!-- This is main area -->
+    <div id="main-header">
+      <h2><a href="#">Twittler</a></h2>
+      <button id="refresh-btn">
+        <i class="fas fa-redo lh-13"></i>
+      </button>
+    </div>
+    <div id="new-tweet-section">
+      <div class="image-section">
+        <img class="profileImg" src="./images/profile_image.jpg" alt="profile image">
+      </div>
+      <div id="writing-section" class="text-section">
+        <input id="my-username" name="username" type="text" placeholder="First, what's your name?">
+        <textarea id="new-tweet-content" placeholder="What's happening?"></textarea>
+        <button id="register" class="lh-13">Tweet</button>
+      </div>
+    </div>
+    <ul id="tweets">
+      <li class="tweet">
+        <div class="image-section">
+          <img class="profileImg" src="./images/profile_image.jpg" alt="profile image">
+        </div>
+        <div class="text-section">
+          <div class="tweetInfo">
+            <span class="username">Seungyeon</span>
+            <span class="time">1분 전</span>
+          </div>
+          <p class="content">Hello this is Twittler. blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah bla
+            h blah blah blah blah blah blah blah blah </p>
+        </div>
+      </li>
+      <li class="tweet">
+        <div class="image-section">
+          <img class="profileImg" src="./images/profile_image.jpg" alt="profile image">
+        </div>
+        <div class="text-section">
+          <div class="tweetInfo">
+            <span class="username">Jaehyuk</span>
+            <span class="time">3시간 전</span>
+          </div>
+          <p class="content">Hello this is Twittler. blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah bla
+            h blah blah blah blah blah blah blah blah </p>
+        </div>
+      </li>
+      <li class="tweet">
+        <div class="image-section">
+          <img class="profileImg" src="./images/profile_image.jpg" alt="profile image">
+        </div>
+        <div class="text-section">
+          <div class="tweetInfo">
+            <span class="username">Codestates</span>
+            <span class="time">21.1.18</span>
+          </div>
+          <p class="content">Hello this is Twittler. blah blah blah blah blah blah blah blah blah blah blah blah 
+            blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah bla
+            h blah blah blah blah blah blah blah blah </p>
+        </div>
+      </li>
+    </ul>
+  </main>
+  <aside><p class="hidden">This is side area</p></aside>
   <script src="script.js"></script>
 </body>
 </html>
