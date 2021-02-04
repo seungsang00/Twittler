@@ -1,4 +1,9 @@
 // your code here
+// textarea 높이 자동조절
+function resize(obj) {
+    obj.style.height = '1px';
+    obj.style.height = (12 + obj.scrollHeight) + 'px';
+}
 
 // DATA는 이미 작성된 트윗을 표시합니다.
 console.log(DATA)
