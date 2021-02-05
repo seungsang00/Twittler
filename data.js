@@ -1,9 +1,12 @@
 var DATA = [
-  { user: 'ingikim', message: 'Welcome to Code States #codestates', created_at: '2019-01-03 12:30:20' },
-  { user: 'satya', message: 'this is test message #pair #programming', created_at: '2019-01-04 18:30:20' },
-  { user: 'sundar', message: 'code now! #work #hard', created_at: '2019-01-05 07:30:20' },
-  { user: 'steve', message: 'Stay hungry, and stay foolish', created_at: '2015-01-03 12:30:20' },
-  { user: 'tim', message: 'education for real world', created_at: '2019-01-04 18:30:20' }
+  { user: 'NIKI', message: '야자타임 시작할까요??', created_at: '2019-01-03 12:30:20' },
+  { user: 'JUNGWON', message: '레쭈고!', created_at: '2019-01-03 12:30:21' },
+  { user: 'SUNOO', message: '음...? 갑자기??', created_at: '2019-01-03 12:33:20' },
+  { user: 'SUNGHOON', message: '그런건 지금하면 재미없어', created_at: '2019-01-03 12:35:20' },
+  { user: 'HEESEUNG', message: '절대 반대!!', created_at: '2019-01-03 12:36:15' },
+  { user: 'JAKE', message: 'ㅋㅋㅋㅋ 재밌을것 같은데?', created_at: '2015-01-03 12:37:01' },
+  { user: 'JAY', message: 'No', created_at: '2019-01-03 18:30:20' },
+  { user: 'HEESEUNG', message: '야식으로 라면 먹을사람???', created_at: '2019-01-31 01:30:20' },
 ];
 
 var randomUser = ['ingikim', 'satya', 'sundar', 'steve', 'tim', 'jeff'];
@@ -51,3 +54,29 @@ Date.prototype.format = function() {
   var format = [yyyy, month, dd].join('-') + ' ' + [HH, mm, ss].join(':');
   return format;
 }
+
+// Date.prototype.format(time) = function(time) {
+//   let now = new Date(); // 현재 날짜 정보를 now 객체로 만듭니다.
+//   let createdTime = new Date(time); // 작성날짜 정보를 인자로 받아와 작성날짜에 대한 정보를 createdTime 객체로 만듭니다
+// let year = createdTime.getFullYear().toString();
+//   let month = (createdTime.getMonth() + 1).toString().padStart(2, '0');
+//   let date = createdTime.getDate().toString().padStart(2, '0');
+//   // 트윗을 작성한 시각부터 현재까지의 시간을 계산하기 위해 날짜정보를 밀리초로 가져오는 getTime() 함수를 사용합시다.
+//   let toNow = now.getTime(); // 현재 날짜 정보를 밀리초로 바꿈
+//   let toCreated = createdTime.getTime(); // 작성한 날짜 정보를 밀리초로 바꿈
+//   let passedTime = toNow - toCreated; // 트윗을 작성한 시점부터 현재까지 흐른 시간(밀리초로 바꿈)
+//   let passedMin = Math.round(passedTime / (1000 * 60));
+//   let passedHour = Math.round(passedTime / (1000 * 60 * 60));
+//   let passedDay = Math.round(passedTime / (1000 * 60 * 60 * 24));
+//   // 화면에 표시할 기준을 잡아봅시다.
+//   // 1분 미만이면 '방금' // 1분 이상 1시간 미만이면 `${min}분 전` // 1시간 이상 1일 미만이면 `${hour}시간 전` // 1일 이상일 경우 `${yyyy}.${mm}.${dd}` 으로 표시해줍시다.
+//   if (passedDay > 0) {
+//       return `${year}.${month}.${date}`;
+//   } else if (passedHour > 0) {
+//       return `${passedHour}시간 전`;
+//   } else if (passedMin > 0) {
+//       return `${passedMin}분 전`;
+//   } else {
+//       return '방금';
+//   }
+// }
