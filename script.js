@@ -1,8 +1,7 @@
-// [TO DO]
+// TODO:
 // 시간 보여주는거 완성하기 --> 보여주기만 하면 되는데 아직 못찾음
 // 프로필 이미지 등록 버튼 구현 --> 로컬 스토리지??
 //  등록 안될경우 랜덤 이미지(혹은 배경 색) 지정
-// aside에 검색창... 만들어봐?!
 // 랜덤 트윗 등록하는거 도전해봐
 
 // [엘리먼트 변수]
@@ -134,8 +133,8 @@ function makeNewTweetElement() {
     let newTweet = {};
     newTweet.user = userName.value;
     newTweet.message = newTweetContent.value;
-    // newTweet.created_at = createdTimeToFormatted();
-    newTweet.created_at = moment().format();
+    newTweet.created_at = createdTimeToFormatted();
+    // newTweet.created_at = moment().format();
     // 그 객체를 DATA에 unshift하자
     DATA.push(newTweet);
     // 추가된 트윗을 보여주자
@@ -205,51 +204,56 @@ function makeTweetElement(DATA){
     return liElement;
 }
 // [화면에 로컬 트윗 한개를 프린트하는 함수]
-function printLocalTweet(localStorage){
-    let tweetElement = makeTweetElementByLocalStorage(localStorage);
+function printLocalTweet(){
+    let tweetElement = makeTweetElementByLocalStorage();
     readingArea.prepend(tweetElement);
 }
 // [로컬 스토리지 안의 데이터를 가져와서 HTML 만들기]
-function makeTweetElementByLocalStorage(localStorage) {
-    //tweet li --
-    let liElement = document.createElement('li');
-    liElement.classList.add('tweet', 'row', 'pl-15', 'pr-15', 'pt-10');
-    //image-section div --
-    let imgDivElement = document.createElement('div');
-    imgDivElement.classList.add('image-section', 'mr-10');
-    liElement.appendChild(imgDivElement);
-    //profile_image div --
-    let profileImg = document.createElement('div');
-    profileImg.classList.add('profile_image');
-    imgDivElement.appendChild(profileImg);
-    //text-section div --
-    let txtDivElement = document.createElement('div');
-    txtDivElement.classList.add('text-section', 'col', 'pb-10');
-    liElement.appendChild(txtDivElement);
-    //row div --
-    let twtInfoElement = document.createElement('div');
-    twtInfoElement.classList.add('row');
-    txtDivElement.appendChild(twtInfoElement);
-    //user name span --
-    let usernameElement = document.createElement('span');
-    usernameElement.classList.add('username');
-    twtInfoElement.appendChild(usernameElement);
-    //time span --
-    let timeElement = document.createElement('span');
-    timeElement.classList.add('time');
-    twtInfoElement.appendChild(timeElement);
-    //content p (트윗 내용) --
-    let contentElement = document.createElement('p');
-    contentElement.classList.add('content');
-    txtDivElement.appendChild(contentElement);
-
+function makeTweetElementByLocalStorage() {
+    let base = document.createElement('div');
     // 로컬스토리지에서 내용 가져다 붙이기
+    const users = JSON.parse(localStorage.getItem('user'));
+    const messages = JSON.parse(localStorage.getItem('message'));
+    const createds = JSON.parse(localStorage.getItem('created_at'));
     for (let i=0; i<JSON.parse(localStorage.getItem('user')).length; i++) {
-        usernameElement.textContent = JSON.parse(localStorage.getItem('user'))[i];
-        contentElement.textContent = JSON.parse(localStorage.getItem('message'))[i];
-        timeElement.textContent = JSON.parse(localStorage.getItem('created_at'))[i];
+        let liElement = document.createElement('li');
+        liElement.classList.add('tweet', 'row', 'pl-15', 'pr-15', 'pt-10');
+        let imgDivElement = document.createElement('div');
+        imgDivElement.classList.add('image-section', 'mr-10');
+        liElement.appendChild(imgDivElement);
+    //profile_image div --
+        let profileImg = document.createElement('div');
+        profileImg.classList.add('profile_image');
+        imgDivElement.appendChild(profileImg);
+    //text-section div --
+        let txtDivElement = document.createElement('div');
+        txtDivElement.classList.add('text-section', 'col', 'pb-10');
+        liElement.appendChild(txtDivElement);
+    //row div --
+        let twtInfoElement = document.createElement('div');
+        twtInfoElement.classList.add('row');
+        txtDivElement.appendChild(twtInfoElement);
+    //user name span --
+        let usernameElement = document.createElement('span');
+        usernameElement.classList.add('username');
+        twtInfoElement.appendChild(usernameElement);
+    //time span --
+        let timeElement = document.createElement('span');
+        timeElement.classList.add('time');
+        twtInfoElement.appendChild(timeElement);
+    //content p (트윗 내용) --
+        let contentElement = document.createElement('p');
+        contentElement.classList.add('content');
+        txtDivElement.appendChild(contentElement);
+        usernameElement.textContent = users[i];
+        contentElement.textContent = messages[i];
+        timeElement.textContent = toCreatedTimeAgo(createds[i]);
+        base.appendChild(liElement);
+        // usernameElement.textContent = JSON.parse(localStorage.getItem('user'))[i];
+        // contentElement.textContent = JSON.parse(localStorage.getItem('message'))[i];
+        // timeElement.textContent = JSON.parse(localStorage.getItem('created_at'))[i];
     }
-    return liElement;
+    return base;
 }
 
 
@@ -291,6 +295,7 @@ function createdTimeToFormatted(time) {
 
 //함수 실행.
 printTweets();
+printLocalTweet();
 
 
 // DATA는 이미 작성된 트윗을 표시합니다.
