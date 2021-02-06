@@ -124,6 +124,9 @@ li.tweet:last-child {border-bottom: 1px solid rgb(235, 238, 240);}
 span.username {font-weight: 600;}
 span.time {font-size: 0.75rem; margin-left: 5px; line-height: 2.3; color: #5b7083;}
 
+/* Use localStorage */
+.local {border: none; margin-bottom: -0.5px;}
+
 /* ASIDE */
 aside {max-width: 350px; border-left: 1px solid rgb(235, 238, 240); z-index: 3;}.search-box {width: 315px; border-radius: 9999px; background: rgb(235, 238, 240);vertical-align: text-bottom; position: sticky; top: 15px;}
 input#search {padding: 10px;}

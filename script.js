@@ -44,24 +44,16 @@ readingArea.addEventListener('click', function (event) {
         let tweetList = DATA.filter(function(tweet){
             return tweet.user === target.textContent;
         });
-        console.log(tweetList)
-    
-        //readingArea.innerHTML = '';
-        while (readingArea.firstChild) {
-            readingArea.removeChild(readingArea.firstChild);
-        }
+        removeTweets();
         tweetList.forEach(printTweet);
     }
 });
 
 // [refresh 버튼 클릭이벤트 함수]
 refresh.addEventListener('click', function (event) {
-    // while (readingArea.firstChild) {
-    //     readingArea.removeChild(readingArea.firstChild);
-    // }
     removeTweets();
-    // DATA.forEach(printTweet);
     printTweets(DATA);
+    //printLocalTweet();  
     resultMessage.classList.add('hidden');
     toCreatedTimeAgo(DATA.created_at);
 });
@@ -146,7 +138,7 @@ function makeNewTweetElement() {
     btnNewTweet.disabled = 'disabled';
     btnNewTweet.classList.remove('active');
 
-    toCreatedTimeAgo(DATA.created_at);
+    createdTimeToFormatted(DATA.created_at);
 }
 
 // [화면의 트윗을 모두 지워주는 함수]
@@ -194,7 +186,7 @@ function makeTweetElement(DATA){
     //time span --
     let timeElement = document.createElement('span');
     timeElement.classList.add('time');
-    timeElement.textContent = toCreatedTimeAgo(DATA.created_at);
+    timeElement.textContent = createdTimeToFormatted(DATA.created_at);
     twtInfoElement.appendChild(timeElement);
     //content p (트윗 내용) --
     let contentElement = document.createElement('p');
@@ -210,7 +202,8 @@ function printLocalTweet(){
 }
 // [로컬 스토리지 안의 데이터를 가져와서 HTML 만들기]
 function makeTweetElementByLocalStorage() {
-    let base = document.createElement('div');
+    let localcontainer = document.createElement('div');
+    localcontainer.classList.add('local');
     // 로컬스토리지에서 내용 가져다 붙이기
     const users = JSON.parse(localStorage.getItem('user'));
     const messages = JSON.parse(localStorage.getItem('message'));
@@ -247,13 +240,13 @@ function makeTweetElementByLocalStorage() {
         txtDivElement.appendChild(contentElement);
         usernameElement.textContent = users[i];
         contentElement.textContent = messages[i];
-        timeElement.textContent = toCreatedTimeAgo(createds[i]);
-        base.appendChild(liElement);
+        timeElement.textContent = createdTimeToFormatted(createds[i]);
+        localcontainer.prepend(liElement);
         // usernameElement.textContent = JSON.parse(localStorage.getItem('user'))[i];
         // contentElement.textContent = JSON.parse(localStorage.getItem('message'))[i];
         // timeElement.textContent = JSON.parse(localStorage.getItem('created_at'))[i];
     }
-    return base;
+    return localcontainer;
 }
 
 
